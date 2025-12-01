@@ -12,9 +12,9 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_GUI_Vote_Menu(object):
     def setupUi(self, GUI_Vote_Menu):
         GUI_Vote_Menu.setObjectName("GUI_Vote_Menu")
-        GUI_Vote_Menu.resize(250, 150)
-        GUI_Vote_Menu.setMinimumSize(QtCore.QSize(250, 150))
-        GUI_Vote_Menu.setMaximumSize(QtCore.QSize(250, 150))
+        GUI_Vote_Menu.resize(250, 200)
+        GUI_Vote_Menu.setMinimumSize(QtCore.QSize(250, 200))
+        GUI_Vote_Menu.setMaximumSize(QtCore.QSize(250, 200))
         self.line_v_x = QtWidgets.QLineEdit(parent=GUI_Vote_Menu)
         self.line_v_x.setGeometry(QtCore.QRect(70, 70, 113, 21))
         self.line_v_x.setObjectName("line_v_x")
@@ -27,6 +27,9 @@ class Ui_GUI_Vote_Menu(object):
         self.label = QtWidgets.QLabel(parent=GUI_Vote_Menu)
         self.label.setGeometry(QtCore.QRect(90, 110, 71, 16))
         self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(parent=GUI_Vote_Menu)
+        self.label_2.setGeometry(QtCore.QRect(40, 160, 181, 20))
+        self.label_2.setObjectName("label_2")
 
         self.retranslateUi(GUI_Vote_Menu)
         QtCore.QMetaObject.connectSlotsByName(GUI_Vote_Menu)
@@ -37,6 +40,7 @@ class Ui_GUI_Vote_Menu(object):
         self.label_vote.setText(_translate("GUI_Vote_Menu", "v: Vote"))
         self.label_exit.setText(_translate("GUI_Vote_Menu", "x: Exit"))
         self.label.setText(_translate("GUI_Vote_Menu", "Voted xxx"))
+        self.label_2.setText(_translate("GUI_Vote_Menu", "Jane - #  John - #  Total - #"))
 
 
 if __name__ == "__main__":
