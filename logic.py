@@ -8,7 +8,13 @@ class Logic(QMainWindow, Ui_GUI_Vote_Menu):
         self.setupUi(self)
 
         self.id_list = []
-        self.cand_list = []
+        self.cand_dict = {"SZA" : 0,
+                          "Sabrina Carpenter" : 0,
+                          "Timothee Chalamet" : 0,
+                          "Kendrick Lamar" : 0,
+                          "John Cena" : 0,
+                          "Scarlett Johansson" : 0,}
+        self.lit = ""
         self.count = 0
 
         self.setWindowTitle("VOTE MENU")
@@ -18,7 +24,7 @@ class Logic(QMainWindow, Ui_GUI_Vote_Menu):
 
         self.Button_Submit.clicked.connect(self.vote)
         self.Button_exit.clicked.connect(self.exit)
-        with(open("Voting Results.csv", "a+")) as csvfile:
+        with(open("Voting Results.csv", "w+")) as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Voter ID", "Candidate"])
 
@@ -56,7 +62,7 @@ class Logic(QMainWindow, Ui_GUI_Vote_Menu):
             in_id = None
         return in_id
     def get_candidate(self):
-        return self.dropBox_candidates.currentText()
+        return str(self.dropBox_candidates.currentText())
 
     def invalid_error(self):
         self.label_message.setStyleSheet("color: red")
@@ -83,6 +89,7 @@ class Logic(QMainWindow, Ui_GUI_Vote_Menu):
         self.dropBox_candidates.hidePopup()
 
     def valid(self):
+        self.cand_dict[self.get_candidate()] += 1
         self.label_message.setStyleSheet("color: green")
         self.label_message.setText(f"Voted for {self.get_candidate()}")
         self.id_list.append(self.get_id())
@@ -91,7 +98,9 @@ class Logic(QMainWindow, Ui_GUI_Vote_Menu):
         self.blank_candidate()
     def exit(self):
         self.label_total.setStyleSheet("color: blue")
-        self.label_total.setText(f"Total: {self.count}")
+        for i in self.cand_dict:
+            self.lit += f'{i}: {self.cand_dict[i]}\n'
+        self.label_total.setText(f"Total: {self.count}\n{self.lit}")
         self.Button_Submit.hide()
         self.label_voter_id.hide()
         self.lineEdit_voter_id.hide()
