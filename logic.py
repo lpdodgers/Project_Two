@@ -21,7 +21,7 @@ class Logic(QMainWindow, Ui_GUI_Vote_Menu):
                           "Timothee Chalamet" : 0,
                           "Kendrick Lamar" : 0,
                           "John Cena" : 0,
-                          "Scarlett Johansson" : 0,}
+                          "Scarlett Johansson" : 0}
         self.lit = ""
         self.count = 0
 
